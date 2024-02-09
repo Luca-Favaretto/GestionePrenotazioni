@@ -6,6 +6,8 @@ import lucafavaretto.GestionePrenotazioni.exeption.ItemNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 public class EdificioService {
@@ -19,5 +21,9 @@ public class EdificioService {
 
     public Edificio findById(long itemId) throws ItemNotFoundException {
         return edificioDao.findById(itemId).orElseThrow(ItemNotFoundException::new);
+    }
+
+    public List<Edificio> findByCitta(String citta) {
+        return edificioDao.findByCitta(citta);
     }
 }

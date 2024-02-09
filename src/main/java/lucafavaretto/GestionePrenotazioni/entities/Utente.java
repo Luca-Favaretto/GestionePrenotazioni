@@ -31,4 +31,10 @@ public class Utente {
         this.nomeCompleto = faker.name().firstName().concat(faker.name().lastName());
         this.email = faker.internet().emailAddress();
     }
+
+    public Utente(String username, String nomeCompleto, String email) {
+        this.username = username;
+        this.nomeCompleto = nomeCompleto;
+        this.email = email;
+    }
 }
