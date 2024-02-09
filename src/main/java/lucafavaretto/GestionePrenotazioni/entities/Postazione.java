@@ -19,6 +19,7 @@ public class Postazione {
     @Setter(AccessLevel.NONE)
     private Long id;
     private String descrizione;
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
     private int maxUtenti;
 

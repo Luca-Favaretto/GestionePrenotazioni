@@ -16,9 +16,14 @@ public class UtenteService {
     @Autowired
     UtenteDao utenteDao;
 
-    public void save(Utente e) {
-        utenteDao.save(e);
-        log.info("Utente " + e + "add with success!");
+    public void save(Utente u) {
+        if (utenteDao.existsByEmail(u.getEmail())) {
+            log.info("email già utilizzata");
+        } else {
+            utenteDao.save(u);
+            log.info("Utente " + u.getUsername() + "add with success!");
+        }
+
     }
 
     public List<Postazione> findPostazioneByCittaETipo(String citta, Tipo tipo) {

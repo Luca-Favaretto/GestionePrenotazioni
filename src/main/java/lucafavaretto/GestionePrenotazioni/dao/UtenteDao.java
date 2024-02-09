@@ -13,6 +13,8 @@ import java.util.List;
 @Repository
 public interface UtenteDao extends JpaRepository<Utente, Long> {
 
+    boolean existsByEmail(String email);
+
     @Query("SELECT p FROM Postazione p JOIN p.edificio e WHERE e.citta = :citta AND p.tipo = :tipo")
     List<Postazione> findPostazioneByCittaETipo(String citta, Tipo tipo);
 }

@@ -33,18 +33,6 @@ public class MyRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Edificio edA = new Edificio();
-        Edificio edB = new Edificio();
-        Postazione poA = new Postazione(edA);
-        Postazione poB = new Postazione(edB);
-        Postazione poC = new Postazione(edB);
-
-        eS.save(edA);
-        eS.save(edB);
-        pS.save(poA);
-        pS.save(poB);
-        pS.save(poC);
-
         Utente uA = new Utente();
         Utente uB = new Utente();
         Utente uC = new Utente();
@@ -57,6 +45,19 @@ public class MyRunner implements CommandLineRunner {
         uS.save(uD);
         uS.save(uF);
 
+        Edificio edA = new Edificio();
+        Edificio edB = new Edificio();
+
+        eS.save(edA);
+        eS.save(edB);
+
+        Postazione poA = new Postazione(edA);
+        Postazione poB = new Postazione(edB);
+        Postazione poC = new Postazione(edB);
+
+        pS.save(poA);
+        pS.save(poB);
+        pS.save(poC);
 
         log.info("MyRunnerLog:" + edA);
         log.info("MyRunnerLog:" + edB);
@@ -65,6 +66,10 @@ public class MyRunner implements CommandLineRunner {
         log.info("MyRunnerLog:" + poC);
         log.info("MyRunnerLog:" + uA);
         log.info("MyRunnerLog:" + uB);
+        log.info("MyRunnerLog:" + uC);
+        log.info("MyRunnerLog:" + uD);
+        log.info("MyRunnerLog:" + uF);
+
 
         log.info("______________________________________________________________");
         log.info("utenti cerca tramite tipo e città");
