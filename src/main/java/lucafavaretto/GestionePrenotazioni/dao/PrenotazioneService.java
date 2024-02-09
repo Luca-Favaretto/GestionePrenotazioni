@@ -30,10 +30,17 @@ public class PrenotazioneService {
         }
     }
 
-    public void newPrenotazione(LocalDate date, Utente utente, Postazione postazione) {
+
+    public void newPrenotazione(Utente utente, LocalDate date, Postazione postazione) {
         if (filterByUtenteAndDay(utente, date)) {
+            if (postazione.getMaxUtenti() > prenotazioneDao.countByPostazione(postazione, date)) {
+                save(new Prenotazione(date, utente, postazione));
+            } else {
+                log.info("Ci dispiace, ma postazione è già al completo");
+            }
 
         }
-
     }
+
+
 }

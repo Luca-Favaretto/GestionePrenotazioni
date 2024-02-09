@@ -46,17 +46,15 @@ public class MyRunner implements CommandLineRunner {
 
         Utente uA = new Utente();
         Utente uB = new Utente();
+        Utente uC = new Utente();
+        Utente uD = new Utente();
+        Utente uF = new Utente();
 
         uS.save(uA);
         uS.save(uB);
-
-        Prenotazione prA = new Prenotazione(LocalDate.parse("2024-02-12"), uA, poA);
-        Prenotazione prB = new Prenotazione(LocalDate.parse("2024-02-12"), uB, poB);
-        Prenotazione prC = new Prenotazione(LocalDate.parse("2024-02-13"), uB, poC);
-
-        prS.save(prA);
-        prS.save(prB);
-        prS.save(prC);
+        uS.save(uC);
+        uS.save(uD);
+        uS.save(uF);
 
 
         log.info("MyRunnerLog:" + edA);
@@ -66,9 +64,19 @@ public class MyRunner implements CommandLineRunner {
         log.info("MyRunnerLog:" + poC);
         log.info("MyRunnerLog:" + uA);
         log.info("MyRunnerLog:" + uB);
-        log.info("MyRunnerLog:" + prA);
-        log.info("MyRunnerLog:" + prB);
-        log.info("MyRunnerLog:" + prC);
+
+        prS.newPrenotazione(uA, LocalDate.parse("2024-02-12"), poA);
+        prS.newPrenotazione(uB, LocalDate.parse("2024-02-12"), poB);
+        prS.newPrenotazione(uB, LocalDate.parse("2024-02-13"), poB);
+        log.info("______________________________________________________________");
+        log.info("dovrebbe non poter prenotare a causa di una prenotazione lo stesso giorno");
+        prS.newPrenotazione(uB, LocalDate.parse("2024-02-12"), poA);
+        log.info("______________________________________________________________");
+        log.info("l'utente F non dovrebbe poter prenotare a causa di un num max di 3");
+        prS.newPrenotazione(uC, LocalDate.parse("2024-02-12"), poA);
+        prS.newPrenotazione(uD, LocalDate.parse("2024-02-12"), poA);
+        prS.newPrenotazione(uF, LocalDate.parse("2024-02-12"), poA);
+
 
     }
 }
