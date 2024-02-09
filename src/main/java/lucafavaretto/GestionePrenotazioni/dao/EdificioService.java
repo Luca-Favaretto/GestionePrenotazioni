@@ -16,7 +16,7 @@ public class EdificioService {
 
     public void save(Edificio e) {
         edificioDao.save(e);
-        log.info("Edificio " + e + "add with success!");
+        log.info("Edificio " + e + " add with success!");
     }
 
     public Edificio findById(long itemId) throws ItemNotFoundException {

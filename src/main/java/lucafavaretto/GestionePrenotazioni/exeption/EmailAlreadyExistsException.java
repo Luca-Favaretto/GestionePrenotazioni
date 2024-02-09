@@ -1,7 +1,7 @@
 package lucafavaretto.GestionePrenotazioni.exeption;
 
 public class EmailAlreadyExistsException extends RuntimeException {
-    public EmailAlreadyExistsException() {
-        super("L'email già esistente");
+    public EmailAlreadyExistsException(String username) {
+        super("L'email già esistente " + username);
     }
 }

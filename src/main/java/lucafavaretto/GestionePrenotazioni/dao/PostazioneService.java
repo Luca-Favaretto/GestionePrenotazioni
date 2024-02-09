@@ -17,7 +17,7 @@ public class PostazioneService {
 
     public void save(Postazione p) {
         postazioneDao.save(p);
-        log.info("Postazione " + p + "add with success!");
+        log.info("Postazione " + p + " add with success!");
     }
 
     public List<Postazione> findByTipo(Tipo tipo) {

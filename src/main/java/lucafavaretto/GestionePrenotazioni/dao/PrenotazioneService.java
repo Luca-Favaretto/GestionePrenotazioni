@@ -17,7 +17,7 @@ public class PrenotazioneService {
 
     public void save(Prenotazione p) {
         prenotazioneDao.save(p);
-        log.info("Prenotazione " + p + "add with success!");
+        log.info("Prenotazione " + p + " add with success!");
     }
 
     public boolean filterByUtenteAndDay(Utente utente, LocalDate day) {

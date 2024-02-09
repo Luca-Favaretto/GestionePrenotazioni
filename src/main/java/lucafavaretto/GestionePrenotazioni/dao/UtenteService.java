@@ -20,11 +20,10 @@ public class UtenteService {
 
     public void save(Utente u) throws EmailAlreadyExistsException {
         if (utenteDao.existsByEmail(u.getEmail())) {
-            log.info("email già utilizzata");
-            throw new EmailAlreadyExistsException();
+            throw new EmailAlreadyExistsException(u.getUsername());
         } else {
             utenteDao.save(u);
-            log.info("Utente " + u.getUsername() + "add with success!");
+            log.info("Utente " + u.getUsername() + " add with success!");
         }
     }
 
