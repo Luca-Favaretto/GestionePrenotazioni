@@ -4,6 +4,8 @@ import com.github.javafaker.Faker;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Locale;
+
 @Entity
 @Getter
 @Setter
@@ -22,7 +24,7 @@ public class Edificio {
     private Postazione postazione;
 
     public Edificio(Postazione postazione) {
-        Faker faker = new Faker();
+        Faker faker = new Faker(Locale.ITALIAN);
         this.nome = faker.name().title();
         this.indirizzo = faker.address().fullAddress();
         this.citta = faker.address().city();

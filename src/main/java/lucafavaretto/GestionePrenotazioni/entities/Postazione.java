@@ -5,6 +5,7 @@ import lombok.*;
 import lucafavaretto.GestionePrenotazioni.enums.Tipo;
 
 import java.util.Random;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -23,6 +24,8 @@ private int maxUtenti;
 @OneToOne
 @JoinColumn(name = "id_edificio")
 private Edificio edificio;
+@OneToMany(mappedBy = "postazione")
+private Set<Prenotazione> prenotazioni;
 
     public Postazione( Edificio edificio) {
         Tipo[] values = Tipo.values();
