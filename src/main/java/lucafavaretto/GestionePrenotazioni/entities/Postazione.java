@@ -13,21 +13,25 @@ import java.util.Set;
 @ToString
 @NoArgsConstructor
 public class Postazione {
-@Id
-@GeneratedValue(strategy = GenerationType.SEQUENCE)
-@Column(name = "id", nullable = false)
-@Setter(AccessLevel.NONE)
-private Long id;
-private String descrizione;
-private Tipo tipo;
-private int maxUtenti;
-@OneToOne
-@JoinColumn(name = "id_edificio")
-private Edificio edificio;
-@OneToMany(mappedBy = "postazione")
-private Set<Prenotazione> prenotazioni;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
+    @Setter(AccessLevel.NONE)
+    private Long id;
+    private String descrizione;
+    private Tipo tipo;
+    private int maxUtenti;
 
-    public Postazione( Edificio edificio) {
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "id_edificio")
+    private Edificio edificio;
+
+    @OneToMany(mappedBy = "postazione")
+    @ToString.Exclude
+    private Set<Prenotazione> prenotazioni;
+
+    public Postazione(Edificio edificio) {
         Tipo[] values = Tipo.values();
         Random rndm = new Random();
         this.descrizione = "descrizione bella";

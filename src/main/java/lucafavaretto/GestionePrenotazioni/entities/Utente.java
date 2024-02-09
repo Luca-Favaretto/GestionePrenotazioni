@@ -22,6 +22,7 @@ private Long id;
 private String username;
 private String nomeCompleto;
 private String email;
+@ToString.Exclude
 @OneToMany(mappedBy = "utente")
 private Set<Prenotazione>prenotazioni;
 
