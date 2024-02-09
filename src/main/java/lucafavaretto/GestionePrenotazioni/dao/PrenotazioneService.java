@@ -36,7 +36,7 @@ public class PrenotazioneService {
             if (postazione.getMaxUtenti() > prenotazioneDao.countByPostazione(postazione, date)) {
                 save(new Prenotazione(date, utente, postazione));
             } else {
-                log.info("Ci dispiace, ma postazione è già al completo");
+                log.info("Ci dispiace, ma postazione è già al completo utente" + utente.getUsername());
             }
 
         }
