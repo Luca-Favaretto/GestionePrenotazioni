@@ -11,25 +11,24 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
 public class Utente {
 
-@Id
-@GeneratedValue(strategy = GenerationType.SEQUENCE)
-@Column(name = "id", nullable = false)
-@Setter(AccessLevel.NONE)
-private Long id;
-private String username;
-private String nomeCompleto;
-private String email;
-@ToString.Exclude
-@OneToMany(mappedBy = "utente")
-private Set<Prenotazione>prenotazioni;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
+    @Setter(AccessLevel.NONE)
+    private Long id;
+    private String username;
+    private String nomeCompleto;
+    private String email;
+    @ToString.Exclude
+    @OneToMany(mappedBy = "utente")
+    private Set<Prenotazione> prenotazioni;
 
-    public Utente(String username, String nomeCompleto, String email) {
-        Faker faker= new Faker(Locale.ITALIAN);
+    public Utente() {
+        Faker faker = new Faker(Locale.ITALIAN);
         this.username = faker.name().username();
-        this.nomeCompleto =  faker.name().firstName().concat(faker.name().lastName());
+        this.nomeCompleto = faker.name().firstName().concat(faker.name().lastName());
         this.email = faker.internet().emailAddress();
     }
 }

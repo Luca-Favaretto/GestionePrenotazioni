@@ -7,17 +7,19 @@ import lucafavaretto.GestionePrenotazioni.dao.PrenotazioneService;
 import lucafavaretto.GestionePrenotazioni.dao.UtenteService;
 import lucafavaretto.GestionePrenotazioni.entities.Edificio;
 import lucafavaretto.GestionePrenotazioni.entities.Postazione;
+import lucafavaretto.GestionePrenotazioni.entities.Prenotazione;
+import lucafavaretto.GestionePrenotazioni.entities.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Component
 @Slf4j
 public class MyRunner implements CommandLineRunner {
-
-    AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext("GestionePrenotazioniApplication");
-
     @Autowired
     EdificioService eS;
     @Autowired
@@ -42,12 +44,31 @@ public class MyRunner implements CommandLineRunner {
         pS.save(poB);
         pS.save(poC);
 
+        Utente uA = new Utente();
+        Utente uB = new Utente();
 
-        System.out.println(edA);
-        System.out.println(edB);
-        System.out.println(poA);
-        System.out.println(poB);
-        System.out.println(poC);
+        uS.save(uA);
+        uS.save(uB);
+
+        Prenotazione prA = new Prenotazione(LocalDate.parse("2024-02-12"), uA, poA);
+        Prenotazione prB = new Prenotazione(LocalDate.parse("2024-02-12"), uB, poB);
+        Prenotazione prC = new Prenotazione(LocalDate.parse("2024-02-13"), uB, poC);
+
+        prS.save(prA);
+        prS.save(prB);
+        prS.save(prC);
+
+
+        log.info("MyRunnerLog:" + edA);
+        log.info("MyRunnerLog:" + edB);
+        log.info("MyRunnerLog:" + poA);
+        log.info("MyRunnerLog:" + poB);
+        log.info("MyRunnerLog:" + poC);
+        log.info("MyRunnerLog:" + uA);
+        log.info("MyRunnerLog:" + uB);
+        log.info("MyRunnerLog:" + prA);
+        log.info("MyRunnerLog:" + prB);
+        log.info("MyRunnerLog:" + prC);
 
     }
 }

@@ -2,6 +2,7 @@ package lucafavaretto.GestionePrenotazioni.dao;
 
 import lombok.extern.slf4j.Slf4j;
 import lucafavaretto.GestionePrenotazioni.entities.Edificio;
+import lucafavaretto.GestionePrenotazioni.entities.Utente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UtenteService {
     @Autowired
-    UtenteService utenteService;
+    UtenteDao utenteDao;
 
-    public void save(Edificio e) {
-        utenteService.save(e);
+    public void save(Utente e) {
+        utenteDao.save(e);
         log.info("Utente " + e + "add with success!");
     }
 }
