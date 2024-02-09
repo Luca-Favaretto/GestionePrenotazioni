@@ -9,6 +9,7 @@ import lucafavaretto.GestionePrenotazioni.entities.Edificio;
 import lucafavaretto.GestionePrenotazioni.entities.Postazione;
 import lucafavaretto.GestionePrenotazioni.entities.Prenotazione;
 import lucafavaretto.GestionePrenotazioni.entities.Utente;
+import lucafavaretto.GestionePrenotazioni.enums.Tipo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -65,6 +66,11 @@ public class MyRunner implements CommandLineRunner {
         log.info("MyRunnerLog:" + uA);
         log.info("MyRunnerLog:" + uB);
 
+        log.info("______________________________________________________________");
+        log.info("utenti cerca tramite tipo e città");
+        uS.findPostazioneByCittaETipo("Basile laziale", Tipo.SALA).forEach(el -> log.info("risultati:" + el));
+        log.info("______________________________________________________________");
+        log.info("salvataggi base senza complicazioni");
         prS.newPrenotazione(uA, LocalDate.parse("2024-02-12"), poA);
         prS.newPrenotazione(uB, LocalDate.parse("2024-02-12"), poB);
         prS.newPrenotazione(uB, LocalDate.parse("2024-02-13"), poB);
